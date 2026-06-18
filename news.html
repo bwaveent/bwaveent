@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News – B.Wave Entertainment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #eef4fb;
+  --off-white: #ffffff;
+  --white: #1530a8;
+  --accent: #1e3fd6;
+  --accent-light: #5170e8;
+  --mid-gray: #7186b8;
+  --nav-height: 72px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans KR', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; transition: background 0.4s ease, backdrop-filter 0.4s; }
+nav.scrolled { background: rgba(238,244,251,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(21,48,168,0.08); }
+nav.solid { background: rgba(238,244,251,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(21,48,168,0.08); }
+.nav-logo img { height: 32px; }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(21,48,168,0.65); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+.nav-links a.active { border-bottom: 1px solid var(--accent); padding-bottom: 2px; color: var(--accent); }
+.nav-social { display: flex; gap: 16px; align-items: center; }
+.nav-social a { color: rgba(21,48,168,0.55); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.nav-social a:hover { color: var(--accent); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
+
+/* PAGE HEADER */
+.page-header { padding: calc(var(--nav-height) + 60px) 48px 60px; border-bottom: 1px solid rgba(21,48,168,0.08); }
+.page-header h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(48px, 8vw, 100px); font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; }
+
+/* NEWS LIST */
+.news-section { max-width: 1200px; margin: 0 auto; padding: 60px 48px 60px; }
+.news-list { border-top: 1px solid rgba(21,48,168,0.1); }
+.news-item { display: grid; grid-template-columns: 120px 1fr auto; align-items: center; gap: 32px; padding: 28px 0; border-bottom: 1px solid rgba(21,48,168,0.07); text-decoration: none; color: inherit; transition: background 0.2s; }
+.news-item:hover .news-title { color: var(--accent); }
+.news-item:hover .news-arrow { opacity: 1; transform: translateX(4px); }
+.news-date { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; color: var(--mid-gray); letter-spacing: 0.05em; white-space: nowrap; }
+.news-title { font-size: 15px; font-weight: 400; line-height: 1.5; transition: color 0.2s; }
+.news-arrow { opacity: 0.3; font-size: 18px; transition: opacity 0.2s, transform 0.2s; }
+
+/* PAGINATION */
+.pagination { display: flex; justify-content: center; align-items: center; gap: 8px; max-width: 1200px; margin: 50px auto 100px; padding: 0 48px; }
+.page-btn { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; color: var(--mid-gray); background: none; border: 1px solid rgba(21,48,168,0.15); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
+.page-btn:hover { border-color: var(--accent); color: var(--accent); }
+.page-btn.active { background: var(--accent); color: #ffffff; border-color: var(--accent); }
+.page-btn.nav-arrow { border: none; font-size: 16px; }
+.page-btn.nav-arrow:disabled { opacity: 0.25; cursor: not-allowed; }
+.page-btn.nav-arrow:disabled:hover { border-color: transparent; color: var(--mid-gray); }
+
+/* FOOTER */
+footer { background: #ffffff; border-top: 1px solid rgba(21,48,168,0.08); padding: 60px 48px 40px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(21,48,168,0.08); }
+.footer-logo img { height: 28px; opacity: 0.9; }
+.footer-nav { display: flex; gap: 32px; list-style: none; }
+.footer-nav a { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(21,48,168,0.45); text-decoration: none; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--white); }
+.footer-social { display: flex; gap: 20px; }
+.footer-social a { color: rgba(21,48,168,0.45); text-decoration: none; font-size: 16px; transition: color 0.2s; }
+.footer-social a:hover { color: var(--accent); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+.footer-address { font-size: 12px; line-height: 1.8; color: rgba(21,48,168,0.35); }
+.footer-address strong { display: block; color: rgba(21,48,168,0.55); font-weight: 500; margin-bottom: 2px; }
+.footer-copy { font-family: 'Montserrat', sans-serif; font-size: 10px; color: rgba(21,48,168,0.3); letter-spacing: 0.05em; }
+
+/* BACK TO TOP */
+.back-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; background: var(--accent); color: #ffffff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; opacity: 0; transform: translateY(16px); transition: opacity 0.3s, transform 0.3s; z-index: 99; }
+.back-top.visible { opacity: 1; transform: translateY(0); }
+.back-top:hover { background: var(--accent-light); }
+
+/* MOBILE NAV */
+.mobile-nav { display: none; position: fixed; inset: 0; background: #ffffff; z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); text-decoration: none; }
+.mobile-nav .close-btn { position: absolute; top: 24px; right: 32px; background: none; border: none; color: var(--white); font-size: 28px; cursor: pointer; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-social { display: none; }
+  .hamburger { display: flex; }
+  .page-header { padding: calc(var(--nav-height) + 40px) 24px 40px; }
+  .news-section { padding: 40px 24px 40px; }
+  .pagination { padding: 0 24px; }
+  footer { padding: 48px 24px 32px; }
+  nav { padding: 0 24px; }
+  .footer-top { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .footer-nav { flex-wrap: wrap; }
+}
+@media(max-width:600px){
+  .news-item { grid-template-columns: 1fr auto; }
+  .news-date { display: none; }
+}
+</style>
+<script src="news-data.js"></script>
+</head>
+<body>
+
+<nav id="mainNav" class="solid">
+  <a href="index.html" class="nav-logo"><img src="https://cdn.prod.website-files.com/68396e891bed1fac0e519d71/6839758199ace6bac0c74688_%EC%9E%90%EC%82%B0%201.svg" alt="B.Wave Entertainment"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="artist.html">Artist</a></li>
+    <li><a href="news.html" class="active">News</a></li>
+    <li><a href="schedule.html">Schedule</a></li>
+    <li><a href="audition.html">Audition</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="https://www.youtube.com/@B.Wave_Entertainment" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.9a3 3 0 0 0-2.1-2.1C19.5 4.3 12 4.3 12 4.3s-7.5 0-9.4.5A3 3 0 0 0 .5 6.9C0 8.8 0 12 0 12s0 3.2.5 5.1a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.2 24 12 24 12s0-3.2-.5-5.1zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg></a>
+    <a href="https://www.instagram.com/b.wave_ent_official/" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.1 8.3 0 8.7 0 12s0 3.7.1 4.9C.3 21.3 2.7 23.7 7.1 23.9 8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg></a>
+    <a href="https://x.com/bwaveent" target="_blank"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.3 1.9h3.4l-7.5 8.6 8.8 11.6h-6.9l-5.4-7.1-6.2 7.1H1.1l8-9.2L.8 1.9h7.1l4.9 6.5 5.5-6.5zm-1.2 18.3h1.9L7 3.8H5l12.1 16.4z"/></svg></a>
+  </div>
+  <div class="hamburger" onclick="openMobileNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" onclick="closeMobileNav()">✕</button>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="artist.html">Artist</a><a href="news.html">News</a><a href="schedule.html">Schedule</a><a href="audition.html">Audition</a>
+</div>
+
+<div style="padding-top:var(--nav-height);">
+  <div class="page-header"><h1>News</h1></div>
+</div>
+
+<div class="news-section">
+  <div class="news-list" id="newsList"></div>
+</div>
+
+<div class="pagination" id="pagination"></div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo"><img src="https://cdn.prod.website-files.com/68396e891bed1fac0e519d71/6839758199ace6bac0c74688_%EC%9E%90%EC%82%B0%201.svg" alt="B.Wave Entertainment"></a>
+      <ul class="footer-nav"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="artist.html">Artist</a></li><li><a href="news.html">News</a></li><li><a href="schedule.html">Schedule</a></li><li><a href="audition.html">Audition</a></li></ul>
+      <div class="footer-social">
+        <a href="https://www.youtube.com/@B.Wave_Entertainment" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.9a3 3 0 0 0-2.1-2.1C19.5 4.3 12 4.3 12 4.3s-7.5 0-9.4.5A3 3 0 0 0 .5 6.9C0 8.8 0 12 0 12s0 3.2.5 5.1a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.2 24 12 24 12s0-3.2-.5-5.1zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg></a>
+        <a href="https://www.instagram.com/b.wave_ent_official/" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.1 8.3 0 8.7 0 12s0 3.7.1 4.9C.3 21.3 2.7 23.7 7.1 23.9 8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg></a>
+        <a href="https://x.com/bwaveent" target="_blank"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.3 1.9h3.4l-7.5 8.6 8.8 11.6h-6.9l-5.4-7.1-6.2 7.1H1.1l8-9.2L.8 1.9h7.1l4.9 6.5 5.5-6.5zm-1.2 18.3h1.9L7 3.8H5l12.1 16.4z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-address"><strong>One Building, 127, Tojeong-ro, Mapo-gu, Seoul</strong></div>
+      <p class="footer-copy">Copyright © 2025 B.Wave All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+  window.addEventListener('scroll',()=>{ document.getElementById('backTop').classList.toggle('visible',window.scrollY>60); });
+  function openMobileNav(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden';}
+  function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow='';}
+
+  // ===== RENDER + PAGINATION (news-data.js의 NEWS_DATA를 사용) =====
+  const ITEMS_PER_PAGE = 5;
+  const newsList = document.getElementById('newsList');
+  const pagination = document.getElementById('pagination');
+
+  const totalPages = Math.max(1, Math.ceil(NEWS_DATA.length / ITEMS_PER_PAGE));
+  let currentPage = 1;
+
+  function renderPage(page) {
+    currentPage = page;
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    const pageItems = NEWS_DATA.slice(start, start + ITEMS_PER_PAGE);
+
+    newsList.innerHTML = pageItems.map(item => `
+      <a href="${item.href}" class="news-item">
+        <span class="news-date">${item.dateLabel}</span>
+        <span class="news-title">${item.title}</span>
+        <span class="news-arrow">→</span>
+      </a>
+    `).join('');
+
+    renderPagination();
+  }
+
+  function renderPagination() {
+    pagination.innerHTML = '';
+    if (totalPages <= 1) return;
+
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'page-btn nav-arrow';
+    prevBtn.textContent = '←';
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.onclick = () => renderPage(currentPage - 1);
+    pagination.appendChild(prevBtn);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+      btn.textContent = i;
+      btn.onclick = () => renderPage(i);
+      pagination.appendChild(btn);
+    }
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'page-btn nav-arrow';
+    nextBtn.textContent = '→';
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.onclick = () => renderPage(currentPage + 1);
+    pagination.appendChild(nextBtn);
+  }
+
+  renderPage(1);
+</script>
+</body>
+</html>

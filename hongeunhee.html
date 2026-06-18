@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>홍은희 (Hong Eun-hee) – B.Wave Entertainment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #eef4fb;
+  --off-white: #ffffff;
+  --white: #1530a8;
+  --accent: #1e3fd6;
+  --accent-light: #5170e8;
+  --mid-gray: #7186b8;
+  --nav-height: 72px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans KR', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-height); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; transition: background 0.4s ease, backdrop-filter 0.4s; }
+nav.scrolled { background: rgba(238,244,251,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(21,48,168,0.08); }
+nav.solid { background: rgba(238,244,251,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(21,48,168,0.08); }
+.nav-logo img { height: 32px; }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(21,48,168,0.65); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+.nav-links a.active { border-bottom: 1px solid var(--accent); padding-bottom: 2px; color: var(--accent); }
+.nav-social { display: flex; gap: 16px; align-items: center; }
+.nav-social a { color: rgba(21,48,168,0.55); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.nav-social a:hover { color: var(--accent); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
+
+/* FOOTER */
+footer { background: #ffffff; border-top: 1px solid rgba(21,48,168,0.08); padding: 60px 48px 40px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(21,48,168,0.08); }
+.footer-logo img { height: 28px; opacity: 0.9; }
+.footer-nav { display: flex; gap: 32px; list-style: none; }
+.footer-nav a { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(21,48,168,0.45); text-decoration: none; transition: color 0.2s; }
+.footer-nav a:hover { color: var(--white); }
+.footer-social { display: flex; gap: 20px; }
+.footer-social a { color: rgba(21,48,168,0.45); text-decoration: none; font-size: 16px; transition: color 0.2s; }
+.footer-social a:hover { color: var(--accent); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+.footer-address { font-size: 12px; line-height: 1.8; color: rgba(21,48,168,0.35); }
+.footer-address strong { display: block; color: rgba(21,48,168,0.55); font-weight: 500; margin-bottom: 2px; }
+.footer-copy { font-family: 'Montserrat', sans-serif; font-size: 10px; color: rgba(21,48,168,0.3); letter-spacing: 0.05em; }
+
+/* BACK TO TOP */
+.back-top { position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; background: var(--accent); color: #ffffff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; opacity: 0; transform: translateY(16px); transition: opacity 0.3s, transform 0.3s; z-index: 99; }
+.back-top.visible { opacity: 1; transform: translateY(0); }
+.back-top:hover { background: var(--accent-light); }
+
+/* MOBILE NAV */
+.mobile-nav { display: none; position: fixed; inset: 0; background: #ffffff; z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); text-decoration: none; }
+.mobile-nav .close-btn { position: absolute; top: 24px; right: 32px; background: none; border: none; color: var(--white); font-size: 28px; cursor: pointer; }
+
+/* RESPONSIVE NAV */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-social { display: none; }
+  .hamburger { display: flex; }
+  nav { padding: 0 24px; }
+  .footer-top { flex-direction: column; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .footer-nav { flex-wrap: wrap; }
+  footer { padding: 48px 24px 32px; }
+}
+</style>
+
+<style>
+.profile-hero { padding: calc(var(--nav-height) + 60px) 48px 0; max-width: 1200px; margin: 0 auto; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid-gray); text-decoration: none; margin-bottom: 32px; }
+.back-link:hover { color: var(--accent); }
+.profile-grid { display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: start; padding-bottom: 100px; }
+.profile-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; background: #dce6f9; }
+.profile-info .en-name { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; display: block; }
+.profile-info h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(40px, 6vw, 80px); font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1; margin-bottom: 28px; }
+.profile-info .desc { font-size: 15px; line-height: 1.9; color: rgba(21,48,168,1); font-weight: 300; margin-bottom: 16px; }
+.profile-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 36px 0; padding: 28px 0; border-top: 1px solid rgba(21,48,168,0.1); border-bottom: 1px solid rgba(21,48,168,0.1); }
+.profile-meta .meta-item .meta-label { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 4px; }
+.profile-meta .meta-item .meta-value { font-size: 14px; color: var(--white); }
+.profile-links { display: flex; gap: 16px; flex-wrap: wrap; }
+.profile-links a { display: flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(21,48,168,0.6); text-decoration: none; border: 1px solid rgba(21,48,168,0.15); padding: 10px 18px; transition: all 0.2s; }
+.profile-links a:hover { color: var(--white); border-color: var(--accent); }
+@media(max-width:900px){
+  .profile-hero{padding:calc(var(--nav-height) + 40px) 24px 0;}
+  .profile-grid{grid-template-columns:1fr;gap:32px;padding-bottom:60px;}
+  .profile-meta{grid-template-columns:1fr;}
+}
+
+/* ACTIVITY TABS */
+.activity-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 100px; }
+.activity-tabs { display: flex; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid rgba(21,48,168,0.12); margin-bottom: 32px; }
+.activity-tab-btn { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid-gray); background: none; border: none; padding: 14px 18px; cursor: pointer; position: relative; transition: color 0.2s; }
+.activity-tab-btn:hover { color: var(--accent); }
+.activity-tab-btn.active { color: var(--accent); }
+.activity-tab-btn.active::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: var(--accent); }
+.activity-panel { display: none; }
+.activity-panel.active { display: block; }
+.activity-list { display: flex; flex-direction: column; }
+.activity-row { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 16px 0; border-bottom: 1px solid rgba(21,48,168,0.06); }
+.activity-row .a-date { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.activity-row .a-text { font-size: 14px; color: rgba(21,48,168,0.8); line-height: 1.6; }
+@media(max-width:600px){
+  .activity-section{padding:0 24px 60px;}
+  .activity-row{grid-template-columns:80px 1fr; gap:16px;}
+  .activity-tab-btn{padding:12px 12px; font-size:11px;}
+}
+</style>
+</head>
+<body>
+<nav id="mainNav" class="solid">
+  <a href="index.html" class="nav-logo"><img src="https://cdn.prod.website-files.com/68396e891bed1fac0e519d71/6839758199ace6bac0c74688_%EC%9E%90%EC%82%B0%201.svg" alt="B.Wave Entertainment"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="artist.html">Artist</a></li><li><a href="news.html">News</a></li><li><a href="schedule.html">Schedule</a></li><li><a href="audition.html">Audition</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="https://www.youtube.com/@B.Wave_Entertainment" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.9a3 3 0 0 0-2.1-2.1C19.5 4.3 12 4.3 12 4.3s-7.5 0-9.4.5A3 3 0 0 0 .5 6.9C0 8.8 0 12 0 12s0 3.2.5 5.1a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.2 24 12 24 12s0-3.2-.5-5.1zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg></a>
+    <a href="https://www.instagram.com/b.wave_ent_official/" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.1 8.3 0 8.7 0 12s0 3.7.1 4.9C.3 21.3 2.7 23.7 7.1 23.9 8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg></a>
+    <a href="https://x.com/bwaveent" target="_blank"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.3 1.9h3.4l-7.5 8.6 8.8 11.6h-6.9l-5.4-7.1-6.2 7.1H1.1l8-9.2L.8 1.9h7.1l4.9 6.5 5.5-6.5zm-1.2 18.3h1.9L7 3.8H5l12.1 16.4z"/></svg></a>
+  </div>
+  <div class="hamburger" onclick="openMobileNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" onclick="closeMobileNav()">✕</button>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="artist.html">Artist</a><a href="news.html">News</a><a href="schedule.html">Schedule</a><a href="audition.html">Audition</a>
+</div>
+
+<div class="profile-hero">
+  <a href="artist.html" class="back-link">← Artist</a>
+  <div class="profile-grid">
+    <img class="profile-img" src="hongeunhee.jpg" alt="홍은희" onerror="this.style.background='#dce6f9';this.removeAttribute('src');">
+    <div class="profile-info">
+      <span class="en-name">HONG EUN-HEE</span>
+      <h1>홍은희</h1>
+      <p class="desc">1999년 MBC '허준'으로 데뷔한 이래 다양한 드라마와 예능 프로그램을 통해 폭넓은 활동을 이어온 배우입니다. '워킹맘 육아대디', '오케이 광자매', '나쁜형사' 등 여러 작품에서 안정적인 연기력을 선보였습니다.</p>
+      <p class="desc">2026년 비웨이브 엔터테인먼트와 전속계약을 체결하며 1호 배우로 새로운 출발을 시작했습니다.</p>
+
+      <div class="profile-meta">
+        <div class="meta-item">
+          <span class="meta-label">Debut</span>
+          <span class="meta-value">1999년 MBC '허준'</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Field</span>
+          <span class="meta-value">배우 / 방송인</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Major Award</span>
+          <span class="meta-value">2021 KBS 연기대상 우수상</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Agency</span>
+          <span class="meta-value">B.Wave Entertainment</span>
+        </div>
+      </div>
+
+      <div class="profile-links">
+        <a href="https://www.instagram.com/pinkeh2015/" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.1 8.3 0 8.7 0 12s0 3.7.1 4.9C.3 21.3 2.7 23.7 7.1 23.9 8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg> Instagram</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="activity-section">
+  <div class="activity-tabs">
+    <button class="activity-tab-btn active" onclick="showTab('drama')">Drama</button>
+    <button class="activity-tab-btn" onclick="showTab('film')">Film</button>
+    <button class="activity-tab-btn" onclick="showTab('show')">Show</button>
+    <button class="activity-tab-btn" onclick="showTab('play')">Play</button>
+    <button class="activity-tab-btn" onclick="showTab('ad')">Ad</button>
+    <button class="activity-tab-btn" onclick="showTab('award')">Award</button>
+    <button class="activity-tab-btn" onclick="showTab('etc')">ETC</button>
+  </div>
+
+  <div class="activity-panel active" id="panel-drama">
+    <div class="activity-list">
+      <div class="activity-row"><span class="a-date">2022</span><span class="a-text">SBS 우리는 오늘부터</span></div>
+      <div class="activity-row"><span class="a-date">2021</span><span class="a-text">KBS 오케이 광자매</span></div>
+      <div class="activity-row"><span class="a-date">2018</span><span class="a-text">MBC 나쁜형사</span></div>
+      <div class="activity-row"><span class="a-date">2017</span><span class="a-text">tvN 드라마 스테이지 : 박대리의 은밀한 사생활 (특별출연)</span></div>
+      <div class="activity-row"><span class="a-date">2016</span><span class="a-text">MBC 워킹맘 육아대디</span></div>
+      <div class="activity-row"><span class="a-date">2012</span><span class="a-text">KBS 대왕의 꿈</span></div>
+      <div class="activity-row"><span class="a-date">2009</span><span class="a-text">MBC 살맛납니다</span></div>
+      <div class="activity-row"><span class="a-date">2008</span><span class="a-text">MBC 흔들리지마</span></div>
+      <div class="activity-row"><span class="a-date">2007</span><span class="a-text">SBS 황금신부</span></div>
+      <div class="activity-row"><span class="a-date">2005</span><span class="a-text">SBS 다이아몬드의 눈물</span></div>
+      <div class="activity-row"><span class="a-date">2005</span><span class="a-text">KBS TV소설 바람꽃</span></div>
+      <div class="activity-row"><span class="a-date">2003</span><span class="a-text">KBS 장미울타리</span></div>
+      <div class="activity-row"><span class="a-date">2002</span><span class="a-text">MBC 베스트극장 : 4월의 이야기</span></div>
+      <div class="activity-row"><span class="a-date">2002</span><span class="a-text">SBS 별을 쏘다</span></div>
+      <div class="activity-row"><span class="a-date">2002</span><span class="a-text">MBC 내사랑 팥쥐</span></div>
+      <div class="activity-row"><span class="a-date">2001</span><span class="a-text">MBC 상도</span></div>
+      <div class="activity-row"><span class="a-date">2000</span><span class="a-text">MBC 사랑은 아무나 하나</span></div>
+      <div class="activity-row"><span class="a-date">1999</span><span class="a-text">MBC 8.15특집극 : 미찌꼬</span></div>
+      <div class="activity-row"><span class="a-date">1999</span><span class="a-text">MBC 허준</span></div>
+      <div class="activity-row"><span class="a-date">1999</span><span class="a-text">MBC 하나뿐인 당신</span></div>
+    </div>
+  </div>
+
+  <div class="activity-panel" id="panel-film">
+    <div class="activity-list">
+      <div class="activity-row"><span class="a-date">2016</span><span class="a-text">무서운 이야기 3 : 화성에서 온 소녀</span></div>
+    </div>
+  </div>
+
+  <div class="activity-panel" id="panel-show">
+    <div class="activity-list">
+      <div class="activity-row"><span class="a-date">2021</span><span class="a-text">KBS2 찐친골프</span></div>
+      <div class="activity-row"><span class="a-date">2019</span><span class="a-text">MBC 구해줘! 홈즈 MC</span></div>
+      <div class="activity-row"><span class="a-date">2018</span><span class="a-text">O'live, tvN 토크몬 MC</span></div>
+      <div class="activity-row"><span class="a-date">2016</span><span class="a-text">올레TV 무비스타 소셜클럽 MC</span></div>
+      <div class="activity-row"><span class="a-date">2016</span><span class="a-text">MBC 위대한 유산 MC</span></div>
+      <div class="activity-row"><span class="a-date">2014</span><span class="a-text">JTBC 학교 다녀오겠습니다</span></div>
+      <div class="activity-row"><span class="a-date">2014</span><span class="a-text">MBC 일밤 : 진짜 사나이 '여군특집'</span></div>
+      <div class="activity-row"><span class="a-date">2014</span><span class="a-text">Story On 맘토닥톡 MC</span></div>
+      <div class="activity-row"><span class="a-date">2014</span><span class="a-text">O'live 올리브쇼 MC</span></div>
+      <div class="activity-row"><span class="a-date">2013</span><span class="a-text">tvN 현장토크쇼 택시 MC</span></div>
+      <div class="activity-row"><span class="a-date">2010~11</span><span class="a-text">MBC 기분 좋은 날 MC</span></div>
+      <div class="activity-row"><span class="a-date">2010~11</span><span class="a-text">MBC FM4U 홍은희의 음악동네 DJ</span></div>
+      <div class="activity-row"><span class="a-date">2010</span><span class="a-text">MBC 원더우먼 MC</span></div>
+      <div class="activity-row"><span class="a-date">2009</span><span class="a-text">On Style 러브트리 36.5</span></div>
+      <div class="activity-row"><span class="a-date">2008</span><span class="a-text">MBC every1 삼색녀 토크쇼 MC</span></div>
+      <div class="activity-row"><span class="a-date">2005</span><span class="a-text">KBS 이홍렬 홍은희의 여유만만 MC</span></div>
+    </div>
+  </div>
+
+  <div class="activity-panel" id="panel-play">
+    <div class="activity-list">
+      <div class="activity-row"><span class="a-date">2022</span><span class="a-text">돌아온다</span></div>
+      <div class="activity-row"><span class="a-date">2015</span><span class="a-text">멜로드라마</span></div>
+      <div class="activity-row"><span class="a-date">2008</span><span class="a-text">클로져</span></div>
+    </div>
+  </div>
+
+  <div class="activity-panel" id="panel-ad">
+    <div class="activity-list">
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">락토바이옴</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">시엔</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">덴트릭스</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">한국토지신탁 코아루</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">엔프라니</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">오하루 자연가득</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">실큰 뷰티 디바이스</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">헤센</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">동국제약 인사돌플러스</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">질리오띠</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">파세코</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">NS홈쇼핑</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">천안 청당메이루즈</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">한국야쿠르트 키 성장 솔루션 UP</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">시세이도</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">유한킴벌리</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">한돈자조금관리위원회</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">하나SK카드</span></div>
+      <div class="activity-row"><span class="a-date">Ad</span><span class="a-text">하이마트 외 다수</span></div>
+    </div>
+  </div>
+
+  <div class="activity-panel" id="panel-award">
+    <div class="activity-list">
+      <div class="activity-row"><span class="a-date">2021</span><span class="a-text">KBS 연기대상 우수상 장편드라마 여자 부문</span></div>
+      <div class="activity-row"><span class="a-date">2014</span><span class="a-text">MBC 방송연예대상 버라이어티부문 특별상</span></div>
+      <div class="activity-row"><span class="a-date">2008</span><span class="a-text">MBC 연기대상 연속극부문 황금연기상</span></div>
+    </div>
+  </div>
+
+  <div class="activity-panel" id="panel-etc">
+    <div class="activity-list">
+      <div class="activity-row"><span class="a-date">2015</span><span class="a-text">법무부 공인신탁 초대 홍보대사</span></div>
+      <div class="activity-row"><span class="a-date">2013</span><span class="a-text">한돈 홍보대사</span></div>
+      <div class="activity-row"><span class="a-date">2012</span><span class="a-text">월드비전글로벌 아동보건 캠페인 홍보대사</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('.activity-tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.activity-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`.activity-tab-btn[onclick="showTab('${name}')"]`).classList.add('active');
+  document.getElementById('panel-' + name).classList.add('active');
+}
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo"><img src="https://cdn.prod.website-files.com/68396e891bed1fac0e519d71/6839758199ace6bac0c74688_%EC%9E%90%EC%82%B0%201.svg" alt="B.Wave Entertainment"></a>
+      <ul class="footer-nav"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="artist.html">Artist</a></li><li><a href="news.html">News</a></li><li><a href="schedule.html">Schedule</a></li><li><a href="audition.html">Audition</a></li></ul>
+      <div class="footer-social">
+        <a href="https://www.youtube.com/@B.Wave_Entertainment" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.9a3 3 0 0 0-2.1-2.1C19.5 4.3 12 4.3 12 4.3s-7.5 0-9.4.5A3 3 0 0 0 .5 6.9C0 8.8 0 12 0 12s0 3.2.5 5.1a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.2 24 12 24 12s0-3.2-.5-5.1zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg></a>
+        <a href="https://www.instagram.com/b.wave_ent_official/" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.1 8.3 0 8.7 0 12s0 3.7.1 4.9C.3 21.3 2.7 23.7 7.1 23.9 8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg></a>
+        <a href="https://x.com/bwaveent" target="_blank"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.3 1.9h3.4l-7.5 8.6 8.8 11.6h-6.9l-5.4-7.1-6.2 7.1H1.1l8-9.2L.8 1.9h7.1l4.9 6.5 5.5-6.5zm-1.2 18.3h1.9L7 3.8H5l12.1 16.4z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-address"><strong>One Building, 127, Tojeong-ro, Mapo-gu, Seoul</strong></div>
+      <p class="footer-copy">Copyright © 2025 B.Wave All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+  window.addEventListener('scroll',()=>{ document.getElementById('backTop').classList.toggle('visible',window.scrollY>60); });
+  function openMobileNav(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden';}
+  function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>
