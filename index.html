@@ -41,17 +41,19 @@ nav.scrolled { background: rgba(238,244,251,0.92); backdrop-filter: blur(12px); 
 /* HERO */
 .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .hero-video-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1530a8 0%, #dce6f9 40%, #c9d9f5 70%, #aac3f0 100%); overflow: hidden; }
-.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0; transition: opacity 0.6s ease; }
-.hero-video.loaded { opacity: 1; }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .wave-lines { position: absolute; inset: 0; overflow: hidden; }
 .wave-lines svg { position: absolute; width: 200%; bottom: -10%; opacity: 0.15; animation: wavePan 20s linear infinite; }
 @keyframes wavePan { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .hero-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to bottom, rgba(238,244,251,0.15) 0%, rgba(238,244,251,0) 40%, rgba(238,244,251,0.7) 100%); }
 .hero-content { position: relative; z-index: 3; text-align: center; padding: 0 24px; }
-.hero-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white); margin-bottom: 28px; opacity: 0; animation: fadeUp 1s ease 0.4s forwards; }
-.hero-title { font-family: 'Montserrat', sans-serif; font-size: clamp(40px, 8vw, 96px); font-weight: 800; line-height: 1.0; letter-spacing: -0.02em; text-transform: uppercase; opacity: 0; animation: fadeUp 1s ease 0.7s forwards; }
+.hero-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white); margin-bottom: 28px; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.hero-title { font-family: 'Montserrat', sans-serif; font-size: clamp(40px, 8vw, 96px); font-weight: 800; line-height: 1.0; letter-spacing: -0.02em; text-transform: uppercase; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s; }
 .hero-title .line2 { color: var(--white); }
-.hero-sub { margin-top: 32px; font-size: 17px; font-weight: 500; letter-spacing: 0.08em; color: var(--white); opacity: 0; animation: fadeUp 1s ease 1s forwards; }
+.hero-sub { margin-top: 32px; font-size: 17px; font-weight: 500; letter-spacing: 0.08em; color: var(--white); opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s; }
+.hero-content.video-ready .hero-eyebrow,
+.hero-content.video-ready .hero-title,
+.hero-content.video-ready .hero-sub { opacity: 1; transform: translateY(0); }
 .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; animation: fadeIn 1s ease 1.5s forwards; }
 .hero-scroll span { font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(21,48,168,0.4); }
 .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, rgba(21,48,168,0.4), transparent); animation: scrollPulse 2s ease-in-out infinite; }
@@ -175,7 +177,7 @@ footer { background: #ffffff; border-top: 1px solid rgba(21,48,168,0.08); paddin
 <!-- HERO -->
 <section class="hero" id="Top">
   <div class="hero-video-bg">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto" oncanplay="this.classList.add('loaded')" onerror="this.style.display='none';">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg" oncanplay="document.querySelector('.hero-content').classList.add('video-ready')" onerror="this.style.display='none'; document.querySelector('.hero-content').classList.add('video-ready');">
       <source src="https://s3.amazonaws.com/webflow-prod-assets/68396e891bed1fac0e519d71/683d2faa32407ea89bd26fae_%E1%84%89%E1%85%B5%E1%84%8F%E1%85%AF%E1%86%AB%E1%84%89%E1%85%B3%2001_1.mp4" type="video/mp4">
       <source src="https://cdn.prod.website-files.com/68396e891bed1fac0e519d71/683d2faa32407ea89bd26fae_%E1%84%89%E1%85%B5%E1%84%8F%E1%85%AF%E1%86%AB%E1%84%89%E1%85%B3%2001_1-transcode.mp4" type="video/mp4">
     </video>
@@ -316,6 +318,11 @@ footer { background: #ffffff; border-top: 1px solid rgba(21,48,168,0.08); paddin
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
   });
+
+  // 안전장치: 영상 로딩이 너무 늦어도 2.5초 후엔 글자가 무조건 나타나도록
+  setTimeout(() => {
+    document.querySelector('.hero-content').classList.add('video-ready');
+  }, 2500);
 </script>
 </body>
 </html>
