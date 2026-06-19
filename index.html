@@ -41,7 +41,8 @@ nav.scrolled { background: rgba(238,244,251,0.92); backdrop-filter: blur(12px); 
 /* HERO */
 .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .hero-video-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1530a8 0%, #dce6f9 40%, #c9d9f5 70%, #aac3f0 100%); overflow: hidden; }
-.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0; transition: opacity 0.6s ease; }
+.hero-video.loaded { opacity: 1; }
 .wave-lines { position: absolute; inset: 0; overflow: hidden; }
 .wave-lines svg { position: absolute; width: 200%; bottom: -10%; opacity: 0.15; animation: wavePan 20s linear infinite; }
 @keyframes wavePan { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -174,7 +175,7 @@ footer { background: #ffffff; border-top: 1px solid rgba(21,48,168,0.08); paddin
 <!-- HERO -->
 <section class="hero" id="Top">
   <div class="hero-video-bg">
-    <video class="hero-video" autoplay muted loop playsinline onerror="this.style.display='none';">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" oncanplay="this.classList.add('loaded')" onerror="this.style.display='none';">
       <source src="https://s3.amazonaws.com/webflow-prod-assets/68396e891bed1fac0e519d71/683d2faa32407ea89bd26fae_%E1%84%89%E1%85%B5%E1%84%8F%E1%85%AF%E1%86%AB%E1%84%89%E1%85%B3%2001_1.mp4" type="video/mp4">
       <source src="https://cdn.prod.website-files.com/68396e891bed1fac0e519d71/683d2faa32407ea89bd26fae_%E1%84%89%E1%85%B5%E1%84%8F%E1%85%AF%E1%86%AB%E1%84%89%E1%85%B3%2001_1-transcode.mp4" type="video/mp4">
     </video>
